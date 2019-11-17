@@ -18,6 +18,11 @@ const config = {
         const res = await pool.request()
             .query('Select * from vWEmployeesByDepartment');
         console.dir(res);
+        // stored procedure
+        const res2 = await pool.request()
+            .output('TotalCount', sql.Int)
+            .execute('spGetTotalCount1')
+        console.dir(res2);
     } catch (err) {
         console.log('exception: ', err);
     }
